@@ -18,7 +18,7 @@ while true; do
   # Wait for cloudstorage fuse processes to exit
   while [ ! -z "$(pgrep cloudstorage)" ]; do
     # Gracefully terminate the cloudstorage fuse process
-    pgrep cloudstorage | xargs -n 1 -I @ kill -TERM @
+    pgrep cloudstorage | xargs -I @ kill -TERM @
 
     # Give cloudstorage process time to exit
     sleep 1

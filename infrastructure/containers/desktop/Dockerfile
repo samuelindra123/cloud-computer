@@ -14,12 +14,12 @@ USER $USER
 
 # Rewrite dotfiles home directory paths
 RUN ls -d ~/.config/vcsh/repo.d/* | \
-  xargs -n 1 -I @ sed -i "s/$DESKTOP_ENVIRONMENT_USER/$USER/" @/config
+  xargs -I @ sed -i "s/$DESKTOP_ENVIRONMENT_USER/$USER/" @/config
 
 # Rebuild tmux extensions for cloud user
 RUN ls -d ~/.tmux/plugins/* | \
   grep -v tpm | \
-  xargs -n 1 -I @ rm -rf @; \
+  xargs -I @ rm -rf @; \
   zsh -c $HOME/.tmux/plugins/tpm/bin/install_plugins
 
 # Rebuild zsh extensions for cloud user
